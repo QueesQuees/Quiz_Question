@@ -4,10 +4,14 @@ import Screen from '../../components/Screen';
 import styles from './index.styles';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faCopyright} from '@fortawesome/free-regular-svg-icons';
+import {faBars} from '@fortawesome/free-solid-svg-icons';
 
-const HomeScreen = ({navigation: {navigate}}) => {
+import Menu from '../../components/Menu/menu';
+const HomeScreen = ({navigation}) => {
   return (
     <Screen>
+      <Menu onPress={() => navigation.openDrawer()} icon={faBars} />
+
       <View style={styles.bodyContent}>
         {/* game name */}
         <View style={styles.bodyContentName}>
@@ -28,9 +32,7 @@ const HomeScreen = ({navigation: {navigate}}) => {
         <View>
           <TouchableOpacity
             style={styles.btnPlay}
-            onPress={() =>
-              navigate('PlayGame', {names: ['Brent', 'Satya', 'Michaś']})
-            }>
+            onPress={() => navigation.navigate('PlayGame')}>
             <Text style={[styles.textPlay, styles.textColorWhite]}>Play</Text>
           </TouchableOpacity>
         </View>

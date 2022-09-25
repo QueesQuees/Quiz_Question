@@ -31,6 +31,8 @@ const styles = StyleSheet.create({
   imageRank: {
     width: 50,
     height: 50,
+    borderRadius: 50,
+    marginLeft: 20,
   },
   answerContainer: {
     // justifyContent: 'flex-start',
@@ -45,39 +47,6 @@ const styles = StyleSheet.create({
   },
   answer: {
     color: 'white',
-  },
-  modalAnswerWrong: {
-    margin: 0,
-    justifyContent: 'center',
-    height: '100%',
-    flexDirection: 'column',
-  },
-  modalContent: {
-    backgroundColor: 'rgba(255, 255, 255, 1)',
-    flex: 1,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    borderTopRightRadius: 25,
-    borderTopLeftRadius: 25,
-    paddingHorizontal: 35,
-    paddingVertical: 25,
-  },
-  btnmodalAnswerWrong: {
-    paddingHorizontal: 30,
-    paddingVertical: 10,
-    backgroundColor: '#198754',
-    borderRadius: 5,
-  },
-
-  modalContentNextLevel: {
-    backgroundColor: 'rgba(255, 255, 255, 1)',
-    flex: 1,
-    justifyContent: 'space-around',
-    alignItems: 'center',
-    borderTopRightRadius: 25,
-    borderTopLeftRadius: 25,
-    paddingHorizontal: 35,
-    paddingVertical: 25,
   },
 });
 

@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 import {ScreenProps} from './props';
 import styles from './index.styles';
-import Menu from '../Menu/menu';
 
 const Screen: React.FC<ScreenProps> = ({statusBar, children}) => {
   return (
@@ -23,23 +22,7 @@ const Screen: React.FC<ScreenProps> = ({statusBar, children}) => {
           <ImageBackground
             source={require('../../access/background/earth.jpg')}
             style={styles.flex1}>
-            <View style={styles.content}>
-              <Menu />
-              {/* <ScrollView
-              ref={scrollViewRef}
-              nestedScrollEnabled
-              refreshControl={
-                refreshControl ? (
-                  <RefreshControl {...refreshControl} />
-                ) : undefined
-              }
-              showsVerticalScrollIndicator={false}
-              keyboardShouldPersistTaps="handled"
-              style={styles.content}
-              contentContainerStyle={{}}> */}
-              {children}
-              {/* </ScrollView> */}
-            </View>
+            <View style={styles.content}>{children}</View>
           </ImageBackground>
         </KeyboardAvoidingView>
       </View>

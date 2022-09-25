@@ -10,8 +10,10 @@ import {QuestionsList} from '../../constant/questions';
 import Question from './components/Question';
 import styles from './index.styles';
 import {imageRanks} from '../../constant/imageRanks';
+import Menu from '../../components/Menu/menu';
+import {faAngleLeft} from '@fortawesome/sharp-solid-svg-icons';
 
-const PlayGame: React.FC = () => {
+const PlayGame: React.FC = ({navigation}) => {
   // random number for next question
   const [numberForRamdom, setNumberForRamdom] = useState(10);
   // Timer for a question
@@ -162,6 +164,7 @@ const PlayGame: React.FC = () => {
   return (
     <>
       <Screen>
+        <Menu onPress={() => navigation.goBack()} icon={faAngleLeft} />
         <View style={styles.container}>
           <View style={styles.pointContainer}>
             <View style={styles.rankContent}>
