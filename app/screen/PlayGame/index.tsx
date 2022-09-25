@@ -7,7 +7,7 @@ import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {Modal, Pressable, Text, TouchableOpacity, View} from 'react-native';
 import ModalCustom from '../../components/ModalCustom';
 import Screen from '../../components/Screen';
-import {QuestionsList} from '../../const/questions';
+import { QuestionsList } from '../../constant/questions';
 import Question from './components/Question';
 import styles from './index.styles';
 
