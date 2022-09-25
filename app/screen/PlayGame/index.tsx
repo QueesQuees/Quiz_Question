@@ -2,14 +2,14 @@ import {
   faFaceSadTear,
   faFaceGrinStars,
 } from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
-import {Modal, Pressable, Text, TouchableOpacity, View} from 'react-native';
+import {Image, Text, TouchableOpacity, View} from 'react-native';
 import ModalCustom from '../../components/ModalCustom';
 import Screen from '../../components/Screen';
-import { QuestionsList } from '../../constant/questions';
+import {QuestionsList} from '../../constant/questions';
 import Question from './components/Question';
 import styles from './index.styles';
+import {imageRanks} from '../../constant/imageRanks';
 
 const PlayGame: React.FC = () => {
   // random number for next question
@@ -24,7 +24,25 @@ const PlayGame: React.FC = () => {
 
   // Question Level 10/20/50/100/500
   const [level, setLevel] = useState(1);
-  const [showRank, setShowRank] = useState('Farmers');
+  const [imgRank, setImgRank] = useState(imageRanks?.rank1);
+  useEffect(() => {
+    switch (level) {
+      case 1:
+        setImgRank(imageRanks?.rank1);
+        return;
+      case 2:
+        setImgRank(imageRanks?.rank2);
+        return;
+      case 3:
+        setImgRank(imageRanks?.rank3);
+        return;
+      case 4:
+        setImgRank(imageRanks?.rank4);
+        return;
+      default:
+        setImgRank(imageRanks?.rank1);
+    }
+  }, [level]);
   // List of questions answered
   const numberFirstQuestion = Math.floor(Math.random() * numberForRamdom);
   const [listOfQuestionsAnswered, setListOfQuestionsAnswered] = useState<any[]>(
@@ -120,7 +138,6 @@ const PlayGame: React.FC = () => {
     switch (level) {
       case 1:
         if (point === 4) {
-          setShowRank('Soldiers');
           setStop(true);
           setLevel(2);
           setQuestionList(QuestionsList?.QuestionsList20);
@@ -131,7 +148,6 @@ const PlayGame: React.FC = () => {
         return;
       case 2:
         if (point === 19) {
-          setShowRank('Captain');
           setStop(true);
           setLevel(3);
           setQuestionList(QuestionsList?.QuestionsList30);
@@ -143,14 +159,15 @@ const PlayGame: React.FC = () => {
     }
   }, [level, point]);
 
-  // console.log(71, listOfQuestionsAnswered);
-
   return (
     <>
       <Screen>
         <View style={styles.container}>
           <View style={styles.pointContainer}>
-            <Text style={styles.level}>Your Rank: {showRank}</Text>
+            <View style={styles.rankContent}>
+              <Text style={styles.level}>Your Rank:</Text>
+              <Image style={styles.imageRank} source={imgRank} />
+            </View>
 
             <Text style={styles.point}>Current score: {point}</Text>
           </View>
@@ -188,54 +205,18 @@ const PlayGame: React.FC = () => {
         </View>
       </Screen>
       {/* modal notification answer wrong */}
-      <Modal
+      <ModalCustom
         visible={modalAnswerWrong}
-        animationType="slide"
-        transparent={true}
-        style={styles.modalAnswerWrong}>
-        <View style={{flex: 2}} />
-        <View style={styles?.modalContent}>
-          <FontAwesomeIcon color="#ffd43b" size={50} icon={faFaceSadTear} />
-
-          <Text style={{color: '#000'}}>
-            Sorry for the wrong answer, we have to start over
-          </Text>
-          <Pressable
-            style={styles.btnmodalAnswerWrong}
-            onPress={() => {
-              setStop(false);
-              setModalAnswerWrong(false);
-            }}>
-            <Text style={{color: '#fff', fontSize: 20}}>Start over</Text>
-          </Pressable>
-        </View>
-      </Modal>
+        onPressPrimary={() => {
+          setStop(false);
+          setModalAnswerWrong(false);
+        }}
+        icon={faFaceSadTear}
+        discription={'Sorry for the wrong answer, we have to start over'}
+        textPrimary={'Start over'}
+      />
 
       {/* modal notification next level */}
-
-      {/* <Modal
-        visible={modalNextLevel}
-        animationType="slide"
-        transparent={true}
-        style={styles.modalAnswerWrong}>
-        <View style={{flex: 2}} />
-
-        <View style={styles?.modalContentNextLevel}>
-          <FontAwesomeIcon color="#ffd43b" size={50} icon={faFaceGrinStars} />
-          <Text style={{color: '#000', textAlign: 'center'}}>
-            Congratulation. Let's start with the next level now. It will be more
-            difficult
-          </Text>
-          <Pressable
-            style={styles.btnmodalAnswerWrong}
-            onPress={() => {
-              setStop(false);
-              setModalNextLevel(false);
-            }}>
-            <Text style={{color: '#fff', fontSize: 20}}>The next level</Text>
-          </Pressable>
-        </View>
-      </Modal> */}
       <ModalCustom
         visible={modalNextLevel}
         onPressPrimary={() => {

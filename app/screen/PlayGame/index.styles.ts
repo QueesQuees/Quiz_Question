@@ -13,6 +13,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  rankContent: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   point: {
     color: 'white',
     fontSize: 20,
@@ -22,6 +27,10 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 20,
     fontWeight: '500',
+  },
+  imageRank: {
+    width: 50,
+    height: 50,
   },
   answerContainer: {
     // justifyContent: 'flex-start',
