@@ -5,6 +5,7 @@ import HomeScreen from './app/screen/Home';
 import PlayGame from './app/screen/PlayGame';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {Button, View} from 'react-native';
+import RankDetail from './app/screen/RankDetail';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -16,19 +17,8 @@ function Root() {
         headerShown: false,
       }}>
       <Drawer.Screen name="Home" component={HomeScreen} />
-      <Drawer.Screen
-        name="NotificationsScreen"
-        component={NotificationsScreen}
-      />
+      <Drawer.Screen name="Rank" component={RankDetail} />
     </Drawer.Navigator>
-  );
-}
-
-function NotificationsScreen({navigation}) {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Button onPress={() => navigation.goBack()} title="Go back home 11" />
-    </View>
   );
 }
 

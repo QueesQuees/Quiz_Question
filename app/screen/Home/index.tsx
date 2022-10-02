@@ -42,7 +42,7 @@ const HomeScreen = ({navigation}) => {
         Please note. If you answer incorrectly 3 times, you will be shown an ad
         for 30 seconds. You can buy the premium version{' '}
         <Text
-          style={{color: 'blue'}}
+          style={{color: 'red'}}
           onPress={() => Linking.openURL('http://google.com')}>
           {/* Linking the premium version */}
           here
