@@ -4,7 +4,6 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from './app/screen/Home';
 import PlayGame from './app/screen/PlayGame';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {Button, View} from 'react-native';
 import RankDetail from './app/screen/RankDetail';
 
 const Stack = createNativeStackNavigator();

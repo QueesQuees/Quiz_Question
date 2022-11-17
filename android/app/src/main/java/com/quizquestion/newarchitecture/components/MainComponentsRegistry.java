@@ -1,4 +1,4 @@
-package com.quiz_question.newarchitecture.components;
+package com.quizquestion.newarchitecture.components;
 
 import com.facebook.jni.HybridData;
 import com.facebook.proguard.annotations.DoNotStrip;
